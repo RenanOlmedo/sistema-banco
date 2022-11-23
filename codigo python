@@ -1,0 +1,95 @@
+menu = '''
+-------Banco LTDA----------
+       [v] saldo
+       [d] depositar
+       [s] sacar
+       [e] extrato
+       [q] sair
+       [r] resetar dia
+---------------------------       
+  '''
+desenho = '''     
+      |-----------------|   
+      |        ||       |
+      |    =========    |
+      |    |   ||       |
+      |    |   ||       |
+      |    |   ||       |  
+      |    =========    |
+      |        ||  |    |
+      |        ||  |    |
+      |        ||  |    |
+      |    =========    |
+      |        ||       | 
+      |-----------------|
+      
+      '''
+saldo = 0
+limite_diario = 500
+numero_saques = 0
+LIMITE_SAQUES = 3
+extrato = []
+
+while True:
+  opcao = input(menu)
+  
+  if opcao == 'v':
+    print('seu saldo é R$',saldo)
+    
+
+  elif opcao == 'd':
+    print('Depósito ')
+    deposito = int(input('quanto voce quer depositar?'))
+    if deposito > 0:
+      saldo = saldo + deposito
+      print('seu saldo é R$ ', saldo )
+      extrato.append('deposito de R$: ')
+      extrato.append(deposito)
+
+    elif deposito <= 0:
+      print('voce nao pode depositar um valor negativo')
+
+  elif opcao == 's':
+   print('Saque ')
+   saque = int(input('quanto deseja sacar?'))
+
+   if numero_saques <= LIMITE_SAQUES and saque <= saldo and saque <= limite_diario and saque > 0:
+     saldo = saldo - saque
+     numero_saques = numero_saques + 1
+     print('saque realizado')
+     print(desenho)
+     print('seu saldo é R$ ', saldo )
+     extrato.append('saque de R$: ')
+     extrato.append(saque)
+  
+   if numero_saques > LIMITE_SAQUES:
+     print('NÂO AUTORIZADO !!!!, seu limite de saques diarios foi atigido')
+      
+   if saque > saldo:
+     print('Operação falhou,voce não tem saldo suficiente')
+     print('seu saldo é R$ ',saldo)
+   
+   if saque > limite_diario:
+     print('Operação falhou,voce só pode sacar este valor por vez R$ ', limite_diario) 
+
+  elif opcao == 'e':
+    print('Extrato ')
+    for n in extrato:
+       print(n)
+    
+    print('seu saldo é de R$:',saldo)
+
+
+  elif opcao == 'q':
+    print('Sair ')  
+    break
+
+  elif opcao == 'r':
+    print('dia resetado,esta e uma opcao que reseta a variavel: numero_saques')
+    numero_saques = 0
+
+  else:
+   print('opção invalida,por favor digite uma opção valida')
+
+
+    
