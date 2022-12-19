@@ -8,22 +8,6 @@ menu = '''
        [r] resetar dia
 ---------------------------       
   '''
-desenho = '''     
-      |-----------------|   
-      |        ||       |
-      |    =========    |
-      |    |   ||       |
-      |    |   ||       |
-      |    |   ||       |  
-      |    =========    |
-      |        ||  |    |
-      |        ||  |    |
-      |        ||  |    |
-      |    =========    |
-      |        ||       | 
-      |-----------------|
-      
-      '''
 saldo = 0
 limite_diario = 500
 numero_saques = 0
@@ -57,7 +41,6 @@ while True:
      saldo = saldo - saque
      numero_saques = numero_saques + 1
      print('saque realizado')
-     print(desenho)
      print('seu saldo é R$ ', saldo )
      extrato.append('saque de R$: ')
      extrato.append(saque)
